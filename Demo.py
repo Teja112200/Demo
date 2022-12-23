@@ -13,6 +13,7 @@ database = {'teja': '504', 'akhil': '521', 'akash': '513', 'sravan': '505'}
 @app.route('/form_login', methods=['GET', 'POST'])
 def home():
     username = request.form['username']
+
     pwd = request.form['password']
 
     if username not in database:
