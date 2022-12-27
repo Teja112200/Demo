@@ -1,5 +1,7 @@
 import sqlite3
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
+
+
 app = Flask(__name__)
 
 
@@ -47,19 +49,63 @@ def saveDetails():
 @app.route('/valid_login', methods=['POST', 'GET'])
 def valid_login():
 
-    username = request.form['username']
+    msg1 = ""
+    r = ""
+    if request.method == "POST":
+        username = request.form['username']
 
-    pwd = request.form['password']
+        pwd = request.form['password']
 
-    if username not in database:
-        return render_template('login.html', info='invalid')
-    else:
-        if database[username] != pwd:
-            return render_template('login.html', info='invalid')
-        else:
-            # return render_template('login.html', info='You Have Successfully Logged In')
-            return render_template('home.html')
+        con = sqlite3.connect("project_db.db")
+        cur = con.cursor()
+
+        cur.execute("SELECT * FROM student_data WHERE username ='" +
+                    username+"' and password ='"+pwd+"'")
+        r = cur.fetchall()
+        print(r)
+
+        # return render_template('pass.html', n=r, c=username, d=pwd)
+        # print(r)
+        try:
+            if (username == r[0][0] and pwd == r[0][1]):
+                session['valid_login'] = True
+                return redirect(url_for('home'))
+        except:
+            msg1 = "wrong username or password "
+            return render_template('login.html', info=msg1)
+
+        # for i in r:
+        #     if (username == i[0] and pwd == i[1]):
+        #         session["logedin"] = True
+        #         return redirect(url_for('/home'))
+        #     else:
+        #         msg1 = "wrong username or password"
+        #         return render_template('login.html', info=msg1)
+
+        # if username not in database:
+        #     return render_template('login.html', info='invalid')
+        # else:
+        #     if database[username] != pwd:
+        #         return render_template('login.html', info='invalid')
+        #     else:
+        #         # return render_template('login.html', info='You Have Successfully Logged In')
+        #         return render_template('home.html')
+
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return render_template('login.html')
 
 
 if __name__ == '__main__':
-    app.run(port=5050)
+
+    app.config['SESSION_TYPE'] = 'filesystem'
+    app.secret_key = 'key'
+
+    app.run(port=5050, debug=True)
