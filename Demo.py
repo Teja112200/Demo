@@ -1,16 +1,16 @@
 import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, session
-
+from flask_session import Session
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def Demo():
-    return render_template('login.html')
+    return render_template('start.html')
 
 
-database = {'teja': '504', 'akhil': '521', 'akash': '513', 'sravan': '505'}
+# database = {'teja': '504', 'akhil': '521', 'akash': '513', 'sravan': '505'}
 
 
 @app.route('/register')
@@ -33,16 +33,15 @@ def saveDetails():
                 # con.execute('CREATE TABLE students (username TEXT, password TEXT, Email TEXT, phone TEXT)')
                 # print("Table created successfully")
                 # con.close()
-
-                cur.execute("INSERT into student_data (username, password , email , phone) values (?,?,?,?)",
+                cur.execute("INSERT into student_data (username,password,email,phone) values (?,?,?,?)",
                             (new_user, new_pwd, email, phone))
                 con.commit()
-                msg = "Student successfully Added"
+                msg = "Student successfully Added now you can login with your credentials"
         except:
             con.rollback()
-            msg = "We can not add the student to the list"
+            msg = "Student already exist"
         finally:
-            return render_template("pass.html", a=msg, n=new_user, c=new_pwd, d=email, q=phone)
+            return render_template("pass.html", a=msg)
             con.close()
 
 
@@ -69,9 +68,10 @@ def valid_login():
         try:
             if (username == r[0][0] and pwd == r[0][1]):
                 session['valid_login'] = True
+                # msg1 = "Logged in successfully"
                 return redirect(url_for('home'))
         except:
-            msg1 = "wrong username or password "
+            msg1 = "Wrong username or password "
             return render_template('login.html', info=msg1)
 
         # for i in r:
@@ -95,6 +95,11 @@ def valid_login():
 @app.route('/home')
 def home():
     return render_template('home.html')
+
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 
 @app.route('/logout')

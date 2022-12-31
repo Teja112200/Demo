@@ -131,6 +131,11 @@ body {
     text-align: center;
 }
 
+.btn:hover {
+    background: rgb(215, 215, 215);
+    color: rgb(48, 48, 48);
+}
+
 .login-form .action button:hover {
     background: #d8d8d8;
 }
@@ -144,4 +149,13 @@ body {
 
 .login-form .action button:nth-child(2):hover {
     background: #3c4d6d;
+}
+
+.ask {
+    text-align: center;
+}
+
+.info {
+    font-size: 17px;
+    text-align: center;
 }

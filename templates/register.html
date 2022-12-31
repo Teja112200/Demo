@@ -12,27 +12,36 @@
 <body>
     <div class="login-form">
         <form action="/savedetails" method="post">
-            <h1>registration</h1>
+            <h1>Registration</h1>
             <div class="content">
                 <div class="input-field">
-                    <input type="text" placeholder="username" autocomplete="nope" name="username">
+
+                    <input type="text" placeholder="username" autocomplete="nope" name="username" required>
                 </div>
                 <div class="input-field">
-                    <input type="password" placeholder="Password" autocomplete="new-password" name="password">
+                    <input type="password" placeholder="Password" autocomplete="new-password" name="password" required>
                 </div>
                 <div class="input-field">
-                    <input type="email" placeholder="Email" autocomplete="nope" name="email">
+                    <input type="email" placeholder="Email" autocomplete="nope" name="email" required>
                 </div>
                 <div class="input-field">
-                    <input type="text" placeholder="phone" autocomplete="nope" name="phone">
+                    <input type="text" placeholder="phone" autocomplete="nope" onkeypress="return ((event.charCode !=8 && event.charCode ==0 )|| (event.charCode >= 48 && event.charCode <= 57))" name="phone" required />
+                    <!-- <input type="text" placeholder="phone" autocomplete="nope" name="phone" required> -->
+                </div>
+                <br>
+
+                <div class="action">
+                    <button>Register</button>
+                </div>
+                <br>
+                <div class="ask">
+                    <a href="/login">
+                        <p><u>Already have an account ? <b> Login here </b></u></p>
+                    </a>
                 </div>
 
-            </div>
-            <div class="action">
-                <button>Register</button>
-            </div>
         </form>
-    </div>
+        </div>
 
 
 </body>

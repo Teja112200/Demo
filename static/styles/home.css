@@ -1,10 +1,29 @@
-.home .content {
-    padding: 35px;
+h1 {
     text-align: center;
 }
 
-.home h1 {
-    padding: 35px 35px 0 35px;
-    font-weight: 300;
+.btn {
+    width: 100%;
+    border: black;
+    padding: 10px;
+    font-family: 'Rubik', sans-serif;
+    cursor: pointer;
+    /* text-transform: uppercase; */
+    background: #e8e9ec;
+    color: #777;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0;
+    letter-spacing: 0.9px;
+    outline: 0;
+    -webkit-transition: all .3s;
+    transition: all .3s;
     text-align: center;
+    font-size: 15px;
+}
+
+.btn:hover {
+    font-style: italic;
+    color: white;
+    font-size: 17px;
+    background: black;
 }
