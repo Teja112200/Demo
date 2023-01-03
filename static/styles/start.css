@@ -302,12 +302,10 @@ div.transbox {
 /*---cards---!#262626*/
 
 .container1 {
-    margin: 0;
+    margin: 20px;
     padding: 0;
     width: 100%;
     height: 100%;
-    font-family: sans-serif;
-    background: pink;
 }
 
 .testimonials {
@@ -329,9 +327,9 @@ div.transbox {
     padding: 20px;
     box-sizing: border-box;
     text-align: center;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     overflow: hidden;
-    border-radius: 0px;
+    border-radius: 30px;
 }
 
 .testimonials .card .layer {
@@ -346,42 +344,47 @@ div.transbox {
 }
 
 
-/* .testimonials .card:hover .layer
- {
+/* .testimonials .card:hover .layer {
     top: 0;
- }
- .testimonials .card .content
- {
+} */
+
+.testimonials .card .content {
     position: relative;
     z-index: 2;
- }
- .testimonials .card .content p{
-    font-size: 18px;
+}
+
+.testimonials .card .content p {
+    font-weight: bold;
+    font-size: 14px;
     line-height: 24px;
-    color: #fff;
- } 
- .testimonials .card .content .image{
+    color: rgb(0, 0, 0);
+}
+
+
+/* .testimonials .card .content .image {
     width: 100px;
     height: 100px;
     margin: 0 auto;
     border-radius: 50%;
     overflow: hidden;
-    border: 4px solid #fff ;
+    border: 4px solid #fff;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
- }
- .testimonials .card .content .details h3
- {
+} */
+
+
+/* .testimonials .card .content .details h3 {
     font-size: 18px;
     color: #fff;
- 
- }
- .testimonials .card .content .details h3 span
- {
+} */
+
+
+/* .testimonials .card .content .details h3 span {
     color: #03a9f4;
     font-size: 14px;
     transition: 1.5s;
- }
- .testimonials .card:hover .content .details h3 span
- {
+} */
+
+
+/* .testimonials .card:hover .content .details h3 span {
     color: #fff;
- }
+} */
