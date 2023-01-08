@@ -22,7 +22,10 @@
                     <input type="text" placeholder="username" autocomplete="nope" name="username" required>
                 </div>
                 <div class="input-field">
-                    <input type="password" placeholder="Password" autocomplete="new-password" name="password" required>
+                    <input type="password" id="psw" placeholder="Password" autocomplete="new-password" name="password" required>
+                </div>
+                <div class="show_pass">
+                    <input type="checkbox" onclick="myFunction()">Show Password
                 </div>
                 <h1 class="info" class="link">{{info}}</h1>
                 <br>
@@ -64,6 +67,17 @@
 
     </div>
     <!-- partial -->
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("psw");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 
 
 

@@ -159,3 +159,14 @@ body {
     font-size: 17px;
     text-align: center;
 }
+
+.show_pass {
+    text-align: right;
+    font-size: 13px;
+    margin-left: 5px;
+    margin-top: -36px;
+}
+
+.set_mar {
+    margin-top: 20px;
+}
